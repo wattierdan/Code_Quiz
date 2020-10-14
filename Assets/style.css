@@ -1,0 +1,70 @@
+body {
+    font-size: 24px;
+}
+
+.container { 
+    width: 700px;
+    position: fixed;
+     top: 30%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     
+}
+.high_scores {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: purple;
+}
+
+.high_scores:hover {
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+.high_scores:active {
+    transform: scale(0.9);
+}
+.time {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    margin-top: 0px;
+    font-weight: bold; 
+}
+
+.title {
+    margin: 0px 0px;
+    font-size: 50px;
+}
+
+.contents {
+    margin-top: 2px;
+    font-weight: bold;
+    font-size: 24px;
+}
+.btn{
+    background-color: purple;
+    color: white;
+    display: block;
+    font-weight: bold;
+    font-size: 32px;
+    border-radius: .5em;
+    outline: none;
+    margin: auto;
+}
+
+.btn:hover {
+    background-color: rebeccapurple;
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.9);
+}
+
