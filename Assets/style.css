@@ -1,53 +1,54 @@
 body {
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
-    
+    background-image: url('./imgs/autumn-studio-PaM7SD5wM6g-unsplash.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 
     
 }
 
 .container { 
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.973);
     opacity: .98;
-    box-shadow: whitesmoke 5px 5px 50px;
+    box-shadow: 5px 5px 50px;
     border-radius: .5em;
     border: solid rgba(0, 0, 0, 0.548) 1px;
     box-shadow: 5px 5px 20px;
     padding: 100px 100px;
-    width: 700px;
+    width: 50%;
     position: fixed;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     text-align: center;
-     z-index: -4;
+    padding: 20px 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: -4;
 
      
 }
 #highScores {
     position: fixed;
-    top: 5px;
-    left: 5px;
-    font-size: 20px;
+    top: 1px;
+    left: 1px;
+    font-size: 16px;
     background-color: transparent;
     border: none;
+    text-shadow: black 3px 2px 2px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 20px 20px;
     outline: none;
-    color: purple;
+    color: white;
     font-weight: bold;
 }
 
 #highScores:hover {
     cursor: pointer;
-    transform: scale(1.1);
     border-radius: .5em;
+    color: gainsboro;
 }
 
-.high_scores:active {
-    transform: scale(0.9);
-}
 .time {
     background-color:black;
     border: solid black 1px;
@@ -65,20 +66,22 @@ body {
 }
 
 .title {
-    margin: 0px 0px;
-    font-size: 50px;
+    font-size: 60px;
     z-index: -4;
     text-shadow: grey 3px 3px 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .contents {
-    margin-top: 15px;
+    margin-top: 20px;
     font-weight: bold;
     font-size: 24px;
     z-index: -4;
+
 }
 .btn{
-    background-color: #815aa6;
+    background-image: url(./imgs/autumn-studio-PaM7SD5wM6g-unsplash.jpg);
     color: whitesmoke;
     text-shadow: 3px 3px 4px black;
     padding: 10px;
@@ -92,8 +95,8 @@ body {
 }
 
 .btn:hover, .answer:hover {
-    background-color: #815aa6;
     cursor: pointer;
+    color: gainsboro;
 }
 
 .btn:active, .answer:active {
@@ -104,14 +107,14 @@ body {
 .answer {
     height: 70px;
     padding: 10px, 10px;
-    width: 300px;
+    width: 240px;
     margin-right: 10px;
-    background-color: #815aa6;
+    background-image: url(./imgs/autumn-studio-PaM7SD5wM6g-unsplash.jpg);
     color: whitesmoke;
     text-shadow: 3px 3px 4px black;
     padding: 10px;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 24px;
     border-radius: .5em;
     outline: none;
     z-index: -4;
@@ -119,13 +122,35 @@ body {
 
 }
 
+#userIntinput {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background-color: transparent;
+    border: inset;
+    outline: none;
+    background-color: black;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#saveScore {
+    height: 50px;
+    width: 50px;
+    background-image: url('./imgs/save-button-icon-1.jpg');
+    background-size: contain;
+    border: none;
+    outline: none;
+    position: relative;
+}
+
 
 
 
 .high_score_list {
     border-radius: .5em;
-    width: 600px;
-    height: 600px;
+    width: 50%;
     position: fixed;
     top: 45%;
     left: 50%;
@@ -173,4 +198,21 @@ body {
     transform: scale(0.9);
     
 
+}
+
+
+@media (max-width: 990px) {
+    .title {
+        font-size: 8vw;
+    }
+    .contents {
+        font-size: 20px;
+    }
+   .container {
+       width: 90%;
+       padding: 10px 10px;
+   }
+   .high_score_list {
+       width: 100%;
+   }
 }
