@@ -9,5 +9,5 @@
 * user score history can be accessed any time by clicking the "view user score history" button
 * [link](https://wattierdan.github.io/Code_Quiz/) to deployed application
 
-!(/assets/imgs/screencapture-wattierdan-github-io-Code-Quiz-2020-10-23-15_13_52.png)
+![](/assets/imgs/screencapture-wattierdan-github-io-Code-Quiz-2020-10-23-15_13_52.png)
 
