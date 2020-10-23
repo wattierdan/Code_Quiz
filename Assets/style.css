@@ -160,6 +160,19 @@ body {
     z-index: 2;
 }
 
+.userScoreList {
+    height: 400px;
+    width: 50%;
+    overflow: auto;
+    margin: auto;
+    color: black;
+    text-shadow: none;
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 18px;
+
+}
+
 #fadeOut {
     width: 100vw;
     height: 100vh;

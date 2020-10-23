@@ -11,6 +11,7 @@ var userScore = 0;
 var userScoreText
 var i = 0 
 var countdownInterval
+var highScoreList = document.getElementsByClassName('high_score_list')
 //Creates choice buttons
 var choiceOne = document.createElement('button')
       choiceOne.setAttribute("class","answer",)
@@ -37,7 +38,7 @@ var userIntinput = document.createElement('input')
       userIntinput.setAttribute("type","text")
       userIntinput.setAttribute("style","width:160px")
       userIntinput.setAttribute("placeholder","Your Name")
-      userIntinput.setAttribute("id","userIntinput")
+      userIntinput.setAttribute("id","userIntinput")     
 //Questions
 var questions =
 [
@@ -85,11 +86,29 @@ var questions =
   question: "end of questions"  
   }
 ];
+// creates elements for user score history overlay
+var highScoreListBox = document.createElement("div")
+    highScoreListBox.setAttribute("class","high_score_list")
+var scoreTitle = document.createElement('h2')
+    scoreTitle.setAttribute("class","scoreTitle")
+    scoreTitle.textContent = "User Score History"
+var userScoreList = document.createElement('ul')
+    userScoreList.setAttribute('class','userScoreList')
+var fadeOut = document.createElement("div")
+    fadeOut.setAttribute("Id","fadeOut")
+var veiwHighScores = document.getElementById('highScores');
+var exitBtn = document.createElement('button');
+    exitBtn.setAttribute("class","exitBtn");
+    exitBtn.setAttribute("id","exitBtn");
+    exitBtn.textContent = "X" 
+
+
 //save data to local storage
 function storeUserAndScore() {
   var str = JSON.stringify(userHighScores)
   localStorage.setItem("userAndScore", str)
 }
+
 //get data from local storage
 function getHighScores() {
   var str = localStorage.getItem("userAndScore")
@@ -98,30 +117,33 @@ function getHighScores() {
     userHighScores = []
   }
 }
-//WHEN view highscores is clicked display a list users and scores ***neeeds to be finished
+
+//get date 
+var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+var month = months[new Date().getMonth()]
+var day = new Date().getDate()
+var  year = new Date().getFullYear() 
+var theTime = new Date().getHours() + ":"  + new Date().getMinutes()
+
+//WHEN view user score history is clicked display a list users and scores
 document.getElementById('highScores').onclick = highScores
 function highScores() {
-  var highScoreListBox = document.createElement("div")
-    highScoreListBox.setAttribute("class","high_score_list")
     body.appendChild(highScoreListBox)
-  var scoreTitle = document.createElement('h2')
-    scoreTitle.setAttribute("class","scoreTitle")
-    scoreTitle.textContent = "HIGH SCORES"
     highScoreListBox.appendChild(scoreTitle)
-  var userScoreList = document.createElement('ul')
-    userScoreList.setAttribute('class','userScoreList')
     scoreTitle.appendChild(userScoreList)
-  var fadeOut = document.createElement("div")
-    fadeOut.setAttribute("Id","fadeOut")
     body.appendChild(fadeOut)
-  var veiwHighScores = document.getElementById('highScores');
     veiwHighScores.remove();
-  var exitBtn = document.createElement('button');
-    exitBtn.setAttribute("class","exitBtn");
-    exitBtn.setAttribute("id","exitBtn");
-    exitBtn.textContent = "X"
     body.appendChild(exitBtn)
     document.getElementById('exitBtn').onclick = exitOverlay
+
+  //prints list of user scores
+  for(var i = userHighScores.length - 1; i >= 0; i--) {
+      var listItem = document.createElement("p")
+      listItem.style.margin = "5px 5px"
+      listItem.textContent = userHighScores[i].toUpperCase()
+      userScoreList.appendChild(listItem)
+  }
+        
   function exitOverlay() {
     highScoreListBox.remove();
     fadeOut.remove();
@@ -130,7 +152,7 @@ function highScores() {
   }
 }
 
-//generates game over elements
+//Game Over
 function gameOver() {
   countdownEl.setAttribute('style','display:none;')
   clearInterval(countdownInterval)
@@ -150,7 +172,7 @@ document.getElementById("scoreSubmit").addEventListener('submit', function saveS
   if (userIntinput.value === '') {
     userIntinput.value = "anonymous"
   }
-  userScoreText = userIntinput.value + ' ' + userScore + 'PTS'
+  userScoreText = month + " " + day + " " + year + " " + userIntinput.value + ' ' + userScore + 'PTS'
   userHighScores.push(userScoreText)
   storeUserAndScore()
   location.reload();
@@ -174,10 +196,10 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
       gameOver();
     }
     }, 1000);
-    //Here we go!
+    //Ready, Set ....
     contents.textContent = '';
     start.remove()
-    title.textContent = "Here We Go!"
+    title.textContent = "Ready, Set, ..."
     //THEN I am presented with a question
     setTimeout(function() {
     title.textContent = questions[i].question;
@@ -195,6 +217,7 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
     document.getElementById('btnThree').onclick = whatWasChose
     document.getElementById('btnFour').onclick = whatWasChose
   }, 1000); 
+  
   //Runs everytime user clicks an answer
   function whatWasChose() {
       usersChoice =this.id;
@@ -230,5 +253,5 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
   } 
 })
 
-              
+             
 
