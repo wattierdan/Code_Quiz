@@ -43,44 +43,92 @@ var userIntinput = document.createElement('input')
 var questions =
 [
   {
-  question: "what is your name?",
-  choices: ["Manchester", "Birmingham", "Dan", "Birmingham"],
-  answer: "btnThree"
-  },
-  {
-  question: "where do you live?",
-  choices: ["Manchester", "sacramento", "Dan", "space"],
+  question: "Inside which HTML element do we put the JavaScript?",
+  choices: ["<javascript>", "<script>", "<scripting>", "<js>"],
   answer: "btnTwo"
   },
   {
-  question: "bob?",
-  choices: ["yes", "no", "maybe so", "all of the above"],
+  question: "Where is the correct place to insert a JavaScript?",
+  choices: ["The <head> section", "The <body> section", "The <biscuts> section", "Both A and D are correct"],
+  answer: "btnFour"
+  },
+  {
+  question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
+  choices: ['<script href="xxx.js">', '<script name="xxx.js">', '<script src="xxx.js">', '<script loc="xxx.js"'],
   answer: "btnThree"
   },
   {
-  question: "what is not in the us?",
-  choices: ["Manchester", "sacramento", "Dan", "Carrie"],
-  answer: "btnOne"
-  },
-  {
-  question: "what is your name?",
-  choices: ["Manchester", "Birmingham", "Dan", "Birmingham"],
-  answer: "btnThree"
-  },
-  {
-  question: "what is not your name?",
-  choices: ["Manchester", "Birmingham", "Dan", "Birmingham"],
-  answer: "btnOne"
-  },
-  {
-  question: "bob?",
-  choices: ["yes", "no", "maybe so", "all of the above"],
-  answer: "btnThree"
-  },
-  {
-  question: "What is the capital of California?",
-  choices: ["California", "Sacramento", "Miami", "Florida"],
+  question: "The external JavaScript file must contain the <script> tag.",
+  choices: ["True", "False", "Maybe So", "Ummm Duhh"],
   answer: "btnTwo"
+  },
+  {
+  question: "How do you create a function in JavaScript?",
+  choices: ["function = myFunction()", "function myFunction()", "function:myFunction()", "florida myFunction:)"],
+  answer: "btnTwo"
+  },
+  {
+  question: "How to write an IF statement in JavaScript?",
+  choices: ["if i == 5 then", "if(i == 5)", "if i = 5", "if i = 5 then"],
+  answer: "btnTwo"
+  },
+  {
+  question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+  choices: ["if (i != 5)", "if (i <> 5)", "if i =! 5 then", "if i <> 5"],
+  answer: "btnOne"
+  },
+  {
+  question: 'How does a WHILE loop start?',
+  choices: ['while (i <= 10; i++)', 'while (i <= 10)', 'while i = 1 to 10', 'while var i = 0 ! i--'],
+  answer: "btnTwo"
+  },
+  {
+  question: 'How does a FOR loop start?',
+  choices: ['for (i <= 5; i++)', 'for i = 1 to 5', 'for (i = 0; i <= 5; i++)', 'for (i = 0; i <= 5)'],
+  answer: "btnThree"
+  },
+  {
+  question: 'How can you add a comment in a JavaScript?',
+  choices: ['<!--This is a comment-->', '//This is a comment', "'This is a comment", '(This is a comment)'],
+  answer: "btnTwo"
+  },
+  {
+  question: 'What is the correct way to write a JavaScript array?',
+  choices: ['var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")', 
+            'var colors = ["red", "green", "blue"]', 
+            'var colors = (1:"red", 2:"green", 3:"blue")', 
+            'var colors = "red", "green", "blue"'],
+  answer: "btnTwo"
+  },
+  {
+  question: 'How do you round the number 7.25, to the nearest integer?',
+  choices: ['rnd(7.25)', 'Math.rnd(7.25)', 'round(7.25)', 'Math.round(7.25)'],
+  answer: "btnFour"
+  },
+  {
+  question: "How can you detect the client's browser name?",
+  choices: ['navigator.appName', 'client.navName', 'browser.name', 'nav.client.name'],
+  answer: "btnOne"
+  },
+  {
+  question: 'Which event occurs when the user clicks on an HTML element?',
+  choices: ['onclick', 'onmouseover', 'onmouseclick', 'onchange'],
+  answer: "btnOne"
+  },
+  {
+  question: 'How do you declare a JavaScript variable?',
+  choices: ['variable carName;', 'v carName;', 'var carName;', ' var = carName'],
+  answer: "btnThree"
+  },
+  {
+  question: 'Which operator is used to assign a value to a variable?',
+  choices: [':)', '-', '=', '*'],
+  answer: "btnThree"
+  },
+  {
+  question: 'What will the following code return: Boolean(10 > 9)',
+  choices: ['False', 'Nan', 'True', 'Potato'],
+  answer: "btnThree"
   },
   {
   question: "end of questions"  
@@ -222,7 +270,7 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
   function whatWasChose() {
       usersChoice =this.id;
       //When all questions are answered
-      if (title.textContent === "What is the capital of California?") {
+      if (title.textContent === "What will the following code return: Boolean(10 > 9)") {
         (usersChoice === questions[i].answer) ? userScore++ : '';
         title.textContent = "You Made It!"
         gameOver();
