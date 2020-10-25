@@ -1,7 +1,7 @@
 ## code quiz
 * a timed quiz on JavaScript fundamentals that stores user scores
 * when the start button is clicked user will be presented with a question
-* after the question is answered user with be presented with another question
+* after the question is answered user is presented with another question
 * if user answers question wrong 10 seconds is deducted from the timer
 * after 60 seconds or if all questions are answered the game will end
 * the user is then presented with an end of game screen and prompted to enter a name to be added to user score list
