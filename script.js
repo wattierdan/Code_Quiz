@@ -48,19 +48,9 @@ var questions =
   answer: "btnTwo"
   },
   {
-  question: "Where is the correct place to insert a JavaScript?",
-  choices: ["The <head> section", "The <body> section", "The <biscuts> section", "Both A and D are correct"],
-  answer: "btnFour"
-  },
-  {
   question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
   choices: ['<script href="xxx.js">', '<script name="xxx.js">', '<script src="xxx.js">', '<script loc="xxx.js"'],
   answer: "btnThree"
-  },
-  {
-  question: "The external JavaScript file must contain the <script> tag.",
-  choices: ["True", "False", "Maybe So", "Ummm Duhh"],
-  answer: "btnTwo"
   },
   {
   question: "How do you create a function in JavaScript?",
@@ -144,12 +134,17 @@ var userScoreList = document.createElement('ul')
     userScoreList.setAttribute('class','userScoreList')
 var fadeOut = document.createElement("div")
     fadeOut.setAttribute("Id","fadeOut")
-var veiwHighScores = document.getElementById('highScores');
-var exitBtn = document.createElement('button');
-    exitBtn.setAttribute("class","exitBtn");
-    exitBtn.setAttribute("id","exitBtn");
-    exitBtn.textContent = "X" 
+var veiwHighScores = document.getElementById('highScores')
+var exitBtn = document.createElement('button')
+    exitBtn.setAttribute("class","exitBtn")
+    exitBtn.setAttribute("id","exitBtn")
+    exitBtn.textContent = "X"
+var clearScoreListBtn = document.createElement('button')
+    clearScoreListBtn.setAttribute("id","clearScoreBtn")
+    clearScoreListBtn.textContent = "clear scores"
 
+
+console.log(Date())
 
 //save data to local storage
 function storeUserAndScore() {
@@ -166,37 +161,43 @@ function getHighScores() {
   }
 }
 
-//get date 
+//get date and time
 var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 var month = months[new Date().getMonth()]
 var day = new Date().getDate()
 var  year = new Date().getFullYear() 
 var theTime = new Date().getHours() + ":"  + new Date().getMinutes()
 
-//WHEN view user score history is clicked display a list users and scores
+//WHEN score history is clicked a list of users and scores is displayed
 document.getElementById('highScores').onclick = highScores
 function highScores() {
-    body.appendChild(highScoreListBox)
-    highScoreListBox.appendChild(scoreTitle)
-    scoreTitle.appendChild(userScoreList)
-    body.appendChild(fadeOut)
-    veiwHighScores.remove();
-    body.appendChild(exitBtn)
-    document.getElementById('exitBtn').onclick = exitOverlay
+  container.style.filter = "blur(4px)"
+  body.appendChild(highScoreListBox)
+  highScoreListBox.appendChild(scoreTitle)
+  scoreTitle.appendChild(userScoreList)
+  body.appendChild(fadeOut)
+  veiwHighScores.remove();
+  body.appendChild(exitBtn)
+  document.getElementById('exitBtn').onclick = exitOverlay
 
   //prints list of user scores
   for(var i = userHighScores.length - 1; i >= 0; i--) {
-      var listItem = document.createElement("p")
-      listItem.style.margin = "5px 5px"
-      listItem.textContent = userHighScores[i].toUpperCase()
-      userScoreList.appendChild(listItem)
+    var listItem = document.createElement("p")
+    listItem.style.margin = "5px 5px"
+    listItem.textContent = userHighScores[i].toUpperCase()
+    userScoreList.appendChild(listItem)
   }
+
+  userScoreList.appendChild(clearScoreListBtn)
+  clearScoreListBtn.addEventListener('click', function clearScore() {
+    userScoreList.remove()
+    localStorage.clear();
+  })
+
         
   function exitOverlay() {
-    highScoreListBox.remove();
-    fadeOut.remove();
-    exitBtn.remove();
-    body.appendChild(veiwHighScores);
+    
+    location.reload();
   }
 }
 
@@ -220,7 +221,9 @@ document.getElementById("scoreSubmit").addEventListener('submit', function saveS
   if (userIntinput.value === '') {
     userIntinput.value = "anonymous"
   }
-  userScoreText = month + " " + day + " " + year + " " + userIntinput.value + ' ' + userScore + 'PTS'
+  userScoreText = theTime + " " +
+                  month + " " + day + " " + year + " " + 
+                  userIntinput.value + ' ' + userScore + 'PTS'
   userHighScores.push(userScoreText)
   storeUserAndScore()
   location.reload();
@@ -252,13 +255,13 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
     setTimeout(function() {
     title.textContent = questions[i].question;
     lineOne.appendChild(choiceOne);
-    choiceOne.textContent = "A) " + questions[i].choices[0];
+    choiceOne.textContent = questions[i].choices[0];
     lineOne.appendChild(choiceTwo)
-    choiceTwo.textContent = "D) " + questions[i].choices[1];
+    choiceTwo.textContent = questions[i].choices[1];
     lineTwo.appendChild(choiceThree);
-    choiceThree.textContent = "B) " + questions[i].choices[2];
+    choiceThree.textContent = questions[i].choices[2];
     lineTwo.appendChild(choiceFour);
-    choiceFour.textContent = "C) " + questions[i].choices[3];
+    choiceFour.textContent = questions[i].choices[3];
     //get usersChoice
     document.getElementById('btnOne').onclick = whatWasChose
     document.getElementById('btnTwo').onclick = whatWasChose
@@ -281,10 +284,10 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
       //present next question
       i++;
       title.textContent = questions[i].question;
-      choiceOne.textContent = "A) " + questions[i].choices[0]; 
-      choiceTwo.textContent = "D) " + questions[i].choices[1];
-      choiceThree.textContent = "B) " + questions[i].choices[2];
-      choiceFour.textContent = "C) " + questions[i].choices[3];
+      choiceOne.textContent = questions[i].choices[0]; 
+      choiceTwo.textContent = questions[i].choices[1];
+      choiceThree.textContent = questions[i].choices[2];
+      choiceFour.textContent = questions[i].choices[3];
       //WHEN I answer a question incorrectly
       } 
       else {
@@ -293,10 +296,10 @@ document.getElementById('startBtn').addEventListener('click', function quiz() {
       //present next question
       i++
       title.textContent = questions [i].question;
-      choiceOne.textContent = "A) " + questions[i].choices[0]; 
-      choiceTwo.textContent = "B) " + questions[i].choices[1];
-      choiceThree.textContent = "C) " + questions[i].choices[2];
-      choiceFour.textContent = "D) " + questions[i].choices[3]; 
+      choiceOne.textContent = questions[i].choices[0]; 
+      choiceTwo.textContent = questions[i].choices[1];
+      choiceThree.textContent = questions[i].choices[2];
+      choiceFour.textContent = questions[i].choices[3]; 
       }
   } 
 })
